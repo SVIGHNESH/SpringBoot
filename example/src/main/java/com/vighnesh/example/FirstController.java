@@ -14,7 +14,7 @@ public class FirstController {
     }
     @GetMapping("/post")
     public String giveTheMessage(){
-        return "message is : FUCK YOU";
+        return "message is :  YOU";
     }
 
     @PostMapping("/post")
