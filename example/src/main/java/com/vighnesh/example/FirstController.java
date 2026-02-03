@@ -1,17 +1,14 @@
 package com.vighnesh.example;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class FirstController {
 
-    @GetMapping("/hello")
-    public String sayHello() {
-        return "Hello from my First Controller";
-    }
+//    @GetMapping("/hello")
+//    public String sayHello() {
+//        return "Hello from my First Controller";
+//    }
     @GetMapping("/post")
     public String giveTheMessage(){
         return "message is :  YOU";
@@ -45,5 +42,21 @@ public class FirstController {
 
         return "THE Order  IS: " + order.toString();
     }
-
+    //http://localhost:8080/hello/variable
+    @GetMapping("/hello/{user-name}")
+    public String pathVar(
+           @PathVariable("user-name") String userName
+    ) {
+        System.out.println(userName);
+        return "My User Name is " + userName;
+    }
+    //http://localhost:8080/hello?param_name=paramvalue&param2=param2value
+    @GetMapping("/hello")
+    public String paramVar(
+           @RequestParam("user") String userFirstName,
+           @RequestParam("lastName") String userLastName
+    ) {
+        System.out.println(userFirstName + userLastName);
+        return "My User Name is " + userFirstName + "and the last Name is " + userLastName;
+    }
 }
